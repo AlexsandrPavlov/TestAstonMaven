@@ -1,4 +1,6 @@
+import io.qameta.allure.junit5.AllureJunit5;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import java.util.List;
@@ -8,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PageTest extends WebDriver {
 
     @Test
+    @ExtendWith(AllureJunit5.class)
     public void testBlockTitle() {
         TopUpPage topUpPage = new TopUpPage(driver);
         String title = topUpPage.getBlockTitleText();
@@ -16,6 +19,7 @@ public class PageTest extends WebDriver {
     }
 
     @Test
+    @ExtendWith(AllureJunit5.class)
     public void testPaymentSystemLogos() {
         TopUpPage topUpPage = new TopUpPage(driver);
         List<WebElement> logos = topUpPage.getPaymentLogos();
@@ -23,6 +27,7 @@ public class PageTest extends WebDriver {
     }
 
     @Test
+    @ExtendWith(AllureJunit5.class)
     public void testServiceDetailsLink() {
         TopUpPage topUpPage = new TopUpPage(driver);
         topUpPage.clickDetailsLink();
@@ -30,6 +35,7 @@ public class PageTest extends WebDriver {
     }
 
     @Test
+    @ExtendWith(AllureJunit5.class)
     public void testFormPlaceholders() {
         TopUpPage topUpPage = new TopUpPage(driver);
 
@@ -44,6 +50,7 @@ public class PageTest extends WebDriver {
     }
 
     @Test
+    @ExtendWith(AllureJunit5.class)
     public void testServiceFormSubmission() {
         TopUpPage topUpPage = new TopUpPage(driver);
 
