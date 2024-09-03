@@ -62,7 +62,6 @@ public class TopUpPage {
         return driver.findElements(paymentIcons);
     }
 
-    // Метод для проверки наличия текста-заполнителя (placeholder) в полях
     public String getPlaceholderText(By locator) {
         return driver.findElement(locator).getAttribute("placeholder");
     }
