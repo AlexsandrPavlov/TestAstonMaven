@@ -1,8 +1,12 @@
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+
 import java.util.List;
 
+import static jdk.javadoc.internal.doclets.formats.html.markup.HtmlStyle.title;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PageTest extends WebDriver {
@@ -21,7 +25,18 @@ public class PageTest extends WebDriver {
         List<WebElement> logos = topUpPage.getPaymentLogos();
         assertTrue(logos.size() > 0, "Логотипы платежных систем отсутствуют в блоке");
     }
-
+    @Test
+    public void testServiceType() {
+        TopUpPage topUpPage = new TopUpPage(driver);
+        WebElement dropdown = driver.findElement(By.id("select__wrapper"));
+        Select select = new Select(dropdown);
+        boolean optionExists = select.getOptions().stream().anyMatch(option -> option.getText().equals("Услуги связи"));
+        assertTrue(optionExists, "Опция не найдена в dropdown");
+        select.selectByVisibleText("Услуги связи");
+        select.selectByVisibleText("Домашний интернет");
+        assertEquals("Выбранная опция не соответствует ожидаемой", "Услуги связи", select.getFirstSelectedOption().getText());
+        assertEquals("Выбранная опция не соответствует ожидаемой", "Домашний интернет", select.getFirstSelectedOption().getText());
+    }
     @Test
     public void testServiceDetailsLink() {
         TopUpPage topUpPage = new TopUpPage(driver);

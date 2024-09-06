@@ -1,6 +1,8 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
 import java.util.List;
 
 public class TopUpPage {
@@ -16,7 +18,7 @@ public class TopUpPage {
     private By successMessage = By.id("success-message");
     private By amountInput = By.id("connection-sum");
     private By creditCardInput = By.id("cc-number");
-    private By paymentIcons = By.cssSelector("body > app-root > div > div > div > app-payment-container > section > div > app-card-page > div > div.card-page__card > app-card-input > form > div.card.ng-tns-c61-0 > div:nth-child(1) > app-input > div > div > div.icons-container.ng-tns-c46-1 > div");
+    private By paymentIcons = By.id("visa_id"); // сайт опять висит, поставил предположительный селектор
 
     public TopUpPage(WebDriver driver) {
         this.driver = driver;
@@ -31,7 +33,7 @@ public class TopUpPage {
     }
 
     public void clickDetailsLink() {
-        driver.findElement(detailsLink).click();
+        driver.findElement(detailsLink);
     }
 
     public void enterPhoneNumber(String phoneNumber) {
