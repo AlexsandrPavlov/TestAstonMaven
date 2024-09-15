@@ -8,7 +8,7 @@ public class WebDriver {
 
     @BeforeEach
     public void setup() {
-        System.setProperty("webdriver.chrome.driver", "C:\\\\chromedriver-win64\\\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "/opt/homebrew/bin/chromedriver");
         driver = new ChromeDriver();
         driver.get("https://www.mts.by/");
     }
